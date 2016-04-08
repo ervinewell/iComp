@@ -18,7 +18,7 @@
 <script>
 	$('.starBox').starRanker();
 	$('body').on('starRanker', function(event, score) {
-		$('.hintBox').find('strong').text(score);
+		$(this).find('.hintBox strong').text(score);
 	});	
 </script>
 </html>
