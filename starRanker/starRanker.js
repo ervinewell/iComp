@@ -5,18 +5,10 @@
  */
 
 (function($){
-
-	/* --- modify the checkState of stars --- */
-	$.fn.setState = function (_val) {		
-		this.attr('checkState', _val)
-			.html(_val == 1 ? '☆' : '★');	
-		return this;
-	};
-	
 	$.fn.starRanker = function (options) {
 			var starNumber    =   options || 5,
 			    $_this        =   $(this),
-			    $_starLi      =   $('<li />').setState(1).html('☆'),
+			    $_starLi      =   $('<li />').html('★'),
 			    $_starArea    =   $('<ul />');
 
 			for(var i = 0; i < starNumber; i++)
@@ -25,10 +17,11 @@
 		    $_starArea.appendTo($_this).on('click', 'li', function() {
 				var $_this    =  $(this);
 			
-				$_this.attr('checkState') == 2 ?
-				$_this.nextAll().setState(1)   :
-				$_this.prevAll().addBack().setState(2);
-				$('body').trigger('starRanker', $_this.parent().find('*[checkState="2"]').length);
+				$_this.hasClass('starChecked') ?
+				  $_this.nextAll().removeClass('starChecked')
+				: $_this.prevAll().addBack().addClass('starChecked');
+				
+				$('body').trigger('starRanker', $_this.parent().find('.starChecked').length);
 		    });		
 			return this;
 		}
