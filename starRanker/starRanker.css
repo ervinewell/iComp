@@ -1,0 +1,17 @@
+.starBox, .hintBox strong {
+	color: rgb(47, 111, 159);
+	font-size: 2em;
+}
+
+.starBox ul {
+	list-style: none;
+	margin 0;
+	padding: 0;
+}
+
+.starBox ul > li {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	cursor: pointer;
+}

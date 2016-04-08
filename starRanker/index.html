@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-en">
+<meta charset="utf-8">
+<head>
+	<title>starRanker demo</title>
+	<link rel="stylesheet" href="starRanker.css">
+</head>
+<body>
+
+<div class="starRanker">
+	<div class="starBox"></div>
+	<div class="hintBox">您的评分是<strong>0</strong>分。</div>
+</div>
+
+</body>
+<script src="../jquery/jquery-2.2.3.min.js"></script>
+<script src="starRanker.js"></script>
+<script>
+	$('.starBox').starRanker();
+	$('body').on('starRanker', function(event, score) {
+		$('.hintBox').find('strong').text(score);
+	});	
+</script>
+</html>
